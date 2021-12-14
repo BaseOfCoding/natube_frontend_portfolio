@@ -1,0 +1,76 @@
+:root {
+  --main_color: #1b1b1b;
+}
+
+.header-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--main_color);
+  padding: 8px 12px;
+}
+
+.header-group > .logo-group {
+  width: 15%;
+  display: flex;
+}
+
+.header-group > .logo-group > a > img {
+  width: 100px;
+  height: 60px;
+  margin-left: 10px;
+}
+
+.header-group > .input-group {
+  display: flex;
+  margin-right: 50px;
+  width: 50%;
+}
+
+.header-group > .input-group > input {
+  width: 90%;
+  height: 35px;
+}
+
+.header-group > .input-group > button {
+  width: 45px;
+}
+
+.header-group > .input-group > button > img {
+  width: 100%;
+}
+
+.header-group > .header-menu-group {
+  display: flex;
+  margin-right: 20px;
+}
+
+.header-group > .header-menu-group > img {
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .header-group > .logo-group > a > img {
+    width: 150%;
+    height: 60px;
+    margin-left: 5px;
+  }
+
+  .header-group > .input-group {
+    margin-right: -30px;
+  }
+
+  .header-group > .input-group > input {
+    width: 80%;
+    height: 35px;
+  }
+
+  .header-group > .input-group > button {
+    width: 35px;
+  }
+
+  .header-group > .header-menu-group {
+    margin-right: 0px;
+  }
+}
