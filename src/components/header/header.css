@@ -33,31 +33,13 @@
 }
 
 .header-group > .input-group > button {
-  width: 45px;
+  width: 35px;
+  height: 39px;
 }
 
 .header-group > .input-group > button > img {
   width: 100%;
 }
-
-/* .header-group > .mobile-input-group {
-  display: flex;
-  margin-right: 50px;
-  width: 50%;
-}
-
-.header-group > .mobile-input-group > input {
-  width: 90%;
-  height: 35px;
-}
-
-.header-group > .mobile-input-group > button {
-  width: 45px;
-}
-
-.header-group > .mobile-input-group > button > img {
-  width: 100%;
-} */
 
 .header-group > .header-menu-group {
   display: flex;

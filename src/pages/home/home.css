@@ -1,0 +1,32 @@
+:root {
+  --side-color: #212121;
+  --center-color: #1b1b1b;
+}
+
+.home-body {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.home-side {
+  background-color: var(--side-color);
+  min-height: 100vh;
+  position: relative;
+  width: 10%;
+  border-right: 1px black solid;
+}
+
+.home-center {
+  background-color: var(--center-color);
+  min-height: 100vh;
+  position: relative;
+  width: 90%;
+}
+
+.home-button-group {
+  display: flex;
+}
+
+.home-button-group > button {
+}

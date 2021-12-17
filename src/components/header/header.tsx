@@ -8,13 +8,13 @@ const imgFolderUrl = "images/icons/";
 function Header() {
   const [search, setSearch] = useState("");
   const [toggleClick, setToggleClick] = useState(false);
-  const [mobileStyle, setMobileStyle] = useState(false);
 
   const searched = useCallback((e) => {
     setSearch(e.target.value);
   }, []);
 
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerWidth });
+
   useEffect(() => {
     let resizeTimer: NodeJS.Timeout;
     let windowSizer = () => {
@@ -31,21 +31,14 @@ function Header() {
   }, [windowSize]);
 
   useEffect(() => {
-    // windowSize.width > 767 ? setToggleState({ mobiled: true, }) : setToggleState({ mobiled: false, });
+    windowSize.width > 767 ? setToggleClick(true) : setToggleClick(false);
   }, [windowSize.width]);
 
   function toggleButtonClicked() {
     setToggleClick((toggleClick) => !toggleClick);
-    setMobileStyle((mobileStyle) => !mobileStyle);
   }
 
   const searchOnClickListener = () => {};
-
-  // function moblieInputShow() {
-  //   // /console.log(document.getElementsByClassName("mobile-input.group"));
-  //   // const mobileStyle = document.getElementsByClassName("mobile-input-group").length >= 1 ? true : false;
-  //   // return mobileStyle;
-  // }
 
   return (
     <div>
@@ -55,13 +48,13 @@ function Header() {
             <img src="images/header_logo.png" alt="비어 있음" />
           </Link>
         </div>
-        <div className="input-group">
+        <div className="input-group" style={toggleClick ? { display: "flex" } : { display: "none" }}>
           <input placeholder=" 검색" type="text" value={search} onChange={searched} onKeyDown={searchOnClickListener} />
           <button onClick={searchOnClickListener}>
             <img src={`${imgFolderUrl}magnifyGlass.png`} alt="비어있음" />
           </button>
         </div>
-        <div className="header-menu-group">
+        <div className="header-menu-group" style={toggleClick ? { display: "flex" } : { display: "none" }}>
           <Link to="/login">
             <img src={`${imgFolderUrl}user_icon.png`} alt="비어있음" />
           </Link>
