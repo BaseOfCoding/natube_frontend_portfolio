@@ -29,12 +29,10 @@
 
 .header-group > .input-group > input {
   width: 90%;
-  height: 35px;
 }
 
 .header-group > .input-group > button {
   width: 35px;
-  height: 39px;
 }
 
 .header-group > .input-group > button > img {

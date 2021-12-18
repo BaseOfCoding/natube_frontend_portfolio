@@ -1,6 +1,7 @@
 :root {
   --side-color: #212121;
   --center-color: #1b1b1b;
+  --button-background-color: #373737;
 }
 
 .home-body {
@@ -26,7 +27,50 @@
 
 .home-button-group {
   display: flex;
+  border-bottom: 2px solid gray;
+  border-top: 2px solid gray;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-button-group > button {
+  min-width: 70px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: var(--button-background-color);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 10px 10px;
+}
+
+.home-videoView-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-group {
+  min-width: 20%;
+  margin: 10px 30px;
+  max-width: 320px;
+  max-height: 500px;
+}
+
+.thumbnail-image {
+  min-width: 320px;
+  max-height: 200px;
+}
+
+@media screen and (max-width: 800px) {
+  .home-button-group {
+    align-items: unset;
+    justify-content: unset;
+  }
+  /* .home-button-group::-webkit-scrollbar {
+    display: none;
+  } */
 }
