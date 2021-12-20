@@ -2,6 +2,7 @@
   --side-color: #212121;
   --center-color: #1b1b1b;
   --button-background-color: #373737;
+  --video-font-size: 12px;
 }
 
 .home-body {
@@ -48,24 +49,78 @@
 .home-videoView-group {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
 }
 
 .video-group {
   min-width: 20%;
   margin: 10px 30px;
-  max-width: 320px;
+  max-width: 260px;
   max-height: 500px;
 }
 
 .thumbnail-image {
-  min-width: 320px;
-  max-height: 200px;
+  min-width: 260px;
+  max-height: 190px;
+}
+
+.video-media-info-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-image {
+  width: 36px;
+  height: 36px;
+  border-radius: 15px;
+  flex: 1;
+}
+
+.video-info {
+  flex: 9;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px;
+}
+
+.video-title {
+  color: white;
+  white-space: nowrap;
+  height: 25px;
+  font-size: var(--video-font-size);
+  font-weight: 700;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.video-uploader {
+  color: gray;
+  font-size: var(--video-font-size);
+  height: 15px;
+  font-weight: 600;
+}
+
+.video-upload-view {
+  font-size: 11px;
+  font-weight: 600;
+  color: gray;
+}
+
+.video-upload-date {
+  font-size: 11px;
+  font-weight: 600;
+  color: gray;
 }
 
 @media screen and (max-width: 800px) {
+  .home-side {
+    width: 0%;
+  }
+
+  .home-center {
+    width: 100%;
+  }
+
   .home-button-group {
     align-items: unset;
     justify-content: unset;
@@ -73,4 +128,11 @@
   /* .home-button-group::-webkit-scrollbar {
     display: none;
   } */
+}
+
+@media screen and (max-width: 768px) {
+  .home-videoView-group {
+    align-items: center;
+    justify-content: center;
+  }
 }

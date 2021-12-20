@@ -8,7 +8,7 @@ function Home() {
         <div className="home-side" />
         <div className="home-center">
           <TagSelect />
-          {/* <VideoView /> */}
+          <VideoView />
         </div>
       </div>
     </>
@@ -30,15 +30,18 @@ function VideoView() {
     <div className="home-videoView-group">
       <div className="video-group">
         <img className="thumbnail-image" src="images/natube_icon.png" alt="X" />
-      </div>
-      <div className="video-group">
-        <img className="thumbnail-image" src="images/natube_icon.png" alt="X" />
-      </div>
-      <div className="video-group">
-        <img className="thumbnail-image" src="images/natube_icon.png" alt="X" />
-      </div>
-      <div className="video-group">
-        <img className="thumbnail-image" src="images/natube_icon.png" alt="X" />
+        <div className="video-media-info-group">
+          <img className="profile-image" src="images/natube_icon.png" alt="X" />
+          <div className="video-info">
+            <span className="video-title">zfsdsadas</span>
+            <span className="video-uploader">정민</span>
+            <div className="video-upload-and-date">
+              <span className="video-upload-view">1.1만회</span>
+              <span style={{ fontSize: 14, fontWeight: 900, color: "gray" }}>﹒</span>
+              <span className="video-upload-date">3일전</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

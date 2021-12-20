@@ -1,0 +1,12 @@
+:root {
+  --center-color: #1b1b1b;
+}
+
+.video-upload-group {
+  background-color: var(--center-color);
+  min-height: 100vh;
+}
+
+span {
+  color: white;
+}

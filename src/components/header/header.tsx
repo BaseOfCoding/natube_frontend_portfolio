@@ -58,7 +58,7 @@ function Header() {
           <Link to="/login">
             <img src={`${imgFolderUrl}user_icon.png`} alt="비어있음" />
           </Link>
-          <Link to="/videoadd">
+          <Link to="/videoupload">
             <img src={`${imgFolderUrl}video_add_icon.png`} alt="비어있음" />
           </Link>
         </div>
