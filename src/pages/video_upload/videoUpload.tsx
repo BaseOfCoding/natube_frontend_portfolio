@@ -1,89 +1,105 @@
 import "./videoUpload.css";
 import "antd/dist/antd.css";
-import { Select, Form, Upload, message, Divider, Input, Button } from "antd";
-import { DownloadOutlined, InboxOutlined, SaveOutlined } from "@ant-design/icons";
-import { tagValues } from "../../utils/values";
+import { Select, Input, Button, Divider, message } from "antd";
+import { SaveOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { MediaUploadForm, VideoUploadEachDivide } from "../../components/props/props";
+import { tagEngValues, tagValues } from "../../utils/values";
 
-const { Dragger } = Upload;
+const { Option } = Select;
 
 function VideoUploadPage() {
   const [video, setVideo] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
 
-  const onUpload = () => {
-    console.log(video, title, description, tag);
+  const titleOnChange = (e: any) => {
+    setTitle(e.target.value);
+  };
+
+  const descriptionOnChange = (e: any) => {
+    setDescription(e.target.value);
+  };
+
+  const tagOnChange = (e: any) => {
+    console.log(e);
+    setTag(e);
+  };
+
+  const uploadConfirm = () => {
+    if (!video || !thumbnail || !title || !description || tag == "") {
+      message.error("빈칸이 있습니다. 빈칸을 입력해주세요.", 1.0);
+    } else {
+      console.log(tag);
+      message
+        .loading("업로드 중입니다.", 2.5)
+        .then(() => message.success("업로드가 완료되었습니다.", 2.5))
+        .then(() => message.info("업로드 완료!!", 2.5));
+    }
   };
 
   return (
     <>
-      <div className="video-upload-page">
-        <div className="video-info-input-group">
-          <span className="contents-span">1. 비디오 업로드</span>
-          <VideoUploadForm />
-        </div>
+      <div className="video-upload">
         <Divider />
-        <div className="video-info-input-group">
-          <span className="contents-span">2. 제목 입력</span>
-          <Input.TextArea id="video-title" placeholder="제목을 입력해주세요." size="large" maxLength={100} />
-        </div>
-        <Divider />
-        <div className="video-info-input-group">
-          <span className="contents-span">3. 비디오 설명 입력</span>
-          <Input.TextArea id="video-description" placeholder="설명을 입력해주세요." size="large" maxLength={1000} />
-        </div>
-        <Divider />
-        {/* <Option value="lucy">Lucy</Option> */}
-        <div className="video-info-input-group">
-          <span className="contents-span">4. 태그 입력</span>
-          <Select maxLength={10} maxTagTextLength={5} mode="tags" style={{ width: "50%" }} placeholder="Tags Mode" />
+        <VideoUploadEachDivide
+          title="1. 비디오 업로드"
+          htmlTag={<MediaUploadForm mediaFile="video" onFunc={setVideo} url_folder="videos" />}
+        />
+        <VideoUploadEachDivide
+          title="2. 썸네일 업로드"
+          htmlTag={<MediaUploadForm mediaFile="image" onFunc={setThumbnail} url_folder="images" />}
+        />
+        <VideoUploadEachDivide
+          title="3. 제목 입력"
+          htmlTag={
+            <Input.TextArea
+              onChange={titleOnChange}
+              id="video-title"
+              placeholder="제목을 입력해주세요."
+              size="large"
+              maxLength={100}
+            />
+          }
+        />
+        <VideoUploadEachDivide
+          title="4. 비디오 설명 입력"
+          htmlTag={
+            <Input.TextArea
+              onChange={descriptionOnChange}
+              id="video-description"
+              placeholder="설명을 입력해주세요."
+              size="large"
+              maxLength={1000}
+            />
+          }
+        />
+        <div className="video-info-group">
+          <div className="video-info-each-title">
+            <span className="contents-span">5. 태그 선택</span>
+          </div>
+          <div className="video-info-each-htmlTag">
+            <Select defaultValue="" style={{ width: "90%" }} onChange={tagOnChange}>
+              {tagValues.map((tag, index) => {
+                if (index != 0) {
+                  return <Option value={tagEngValues[index]}>{tag}</Option>;
+                }
+              })}
+            </Select>
+          </div>
         </div>
         <Divider />
         <div className="video-upload-button-group">
-          <Button type="primary" icon={<SaveOutlined />}>
+          <Button onClick={uploadConfirm} type="primary" icon={<SaveOutlined />} htmlType="submit">
             비디오 업로드 하기
           </Button>
         </div>
+        <Divider />
+        <Divider />
       </div>
     </>
-  );
-}
-
-function VideoUploadForm() {
-  const props = {
-    name: "file",
-    multiple: false,
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-
-    onChange(info: any) {
-      const { status } = info.file;
-      if (status !== "uploading") {
-        console.log(info);
-      }
-      if (status === "done") {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === "error") {
-        console.log(status);
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-    onDrop(e: any) {
-      console.log("Dropped files", e.dataTransfer.files);
-    },
-  };
-
-  return (
-    <div className="video-dragger">
-      <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined />
-        </p>
-        <p className="ant-upload-text">클릭 또는 업로드 할 영상을 끌어서 놔주세요.</p>
-        <p className="ant-upload-hint">용량 사이즈는 작을 수록 좋습니다.</p>
-      </Dragger>
-    </div>
   );
 }
 

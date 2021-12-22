@@ -66,6 +66,7 @@
 .video-media-info-group {
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
 }
 
 .profile-image {
@@ -85,7 +86,7 @@
 .video-title {
   color: white;
   white-space: nowrap;
-  height: 25px;
+  margin-bottom: 5px;
   font-size: var(--video-font-size);
   font-weight: 700;
   display: block;
@@ -96,7 +97,6 @@
 .video-uploader {
   color: gray;
   font-size: var(--video-font-size);
-  height: 15px;
   font-weight: 600;
 }
 
