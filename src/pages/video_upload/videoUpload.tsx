@@ -4,7 +4,9 @@ import { Select, Input, Button, Divider, message } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { MediaUploadForm, VideoUploadEachDivide } from "../../components/props/props";
-import { tagEngValues, tagValues } from "../../utils/values";
+import { API_URL, tagEngValues, tagValues } from "../../utils/values";
+import axios from "axios";
+import { useHistory } from "react-router";
 
 const { Option } = Select;
 
@@ -14,6 +16,7 @@ function VideoUploadPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tag, setTag] = useState("");
+  const history = useHistory();
 
   const titleOnChange = (e: any) => {
     setTitle(e.target.value);
@@ -24,19 +27,30 @@ function VideoUploadPage() {
   };
 
   const tagOnChange = (e: any) => {
-    console.log(e);
     setTag(e);
   };
 
   const uploadConfirm = () => {
-    if (!video || !thumbnail || !title || !description || tag == "") {
+    if (video == "" || thumbnail == "" || title == "" || description == "" || tag == "") {
+      console.log(video);
       message.error("빈칸이 있습니다. 빈칸을 입력해주세요.", 1.0);
     } else {
-      console.log(tag);
-      message
-        .loading("업로드 중입니다.", 2.5)
-        .then(() => message.success("업로드가 완료되었습니다.", 2.5))
-        .then(() => message.info("업로드 완료!!", 2.5));
+      axios
+        .post(`${API_URL}/videouploads`, {
+          videoUrl: video,
+          thumbnailUrl: thumbnail,
+          title: title,
+          description: description,
+          tag: tag,
+        })
+        .then((res) => {
+          console.log(res);
+          history.replace("/");
+        })
+        .catch((err) => {
+          console.error(err.message);
+          message.error("업로드에 문제가 생겼습니다.");
+        });
     }
   };
 
@@ -46,11 +60,13 @@ function VideoUploadPage() {
         <Divider />
         <VideoUploadEachDivide
           title="1. 비디오 업로드"
-          htmlTag={<MediaUploadForm mediaFile="video" onFunc={setVideo} url_folder="videos" />}
+          htmlTag={<MediaUploadForm mediaFile="video" setState={setVideo} url_folder="videos" upload_text="영상" />}
         />
         <VideoUploadEachDivide
           title="2. 썸네일 업로드"
-          htmlTag={<MediaUploadForm mediaFile="image" onFunc={setThumbnail} url_folder="images" />}
+          htmlTag={
+            <MediaUploadForm mediaFile="image" setState={setThumbnail} url_folder="thumbnails" upload_text="썸네일" />
+          }
         />
         <VideoUploadEachDivide
           title="3. 제목 입력"

@@ -1,5 +1,6 @@
 import { InboxOutlined } from "@ant-design/icons";
 import { Divider, message, Upload } from "antd";
+import { API_URL } from "../../utils/values";
 
 // interface
 
@@ -11,7 +12,8 @@ interface IVideoUploadEachDivide {
 interface IMediaUploadInfo {
   mediaFile: string;
   url_folder: string;
-  onFunc: (str: string) => void;
+  setState: (str: string) => void;
+  upload_text: string;
 }
 
 interface IVideoInfo {}
@@ -37,26 +39,22 @@ export const VideoUploadEachDivide = ({ title, htmlTag }: IVideoUploadEachDivide
 
 const { Dragger } = Upload;
 
-export function MediaUploadForm({ mediaFile, url_folder, onFunc }: IMediaUploadInfo) {
+export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text }: IMediaUploadInfo) {
   const props = {
     name: mediaFile,
     multiple: false,
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
 
     onChange(info: any) {
-      const { status, type } = info.file;
+      const { status } = info.file;
 
-      onFunc("zz");
-      console.log(url_folder);
-
-      if (status !== "uploading") {
-        console.log(info);
-      }
       if (status === "done") {
-        message.success(`${info.file.name} file uploaded successfully.`);
+        message.success(`${info.file.name} 파일 업로드 성공!`, 2.0);
+        const response = info.file.response;
+        var fileUrl = mediaFile === "video" ? response.videoUrl : response.thumbnailUrl;
+        console.log(`${API_URL}/${fileUrl}`);
+        setState(`${API_URL}/${fileUrl}`);
       } else if (status === "error") {
-        console.log(status);
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`${info.file.name} 파일 업로드 실패!`, 2.0);
       }
     },
     onDrop(e: any) {
@@ -66,12 +64,12 @@ export function MediaUploadForm({ mediaFile, url_folder, onFunc }: IMediaUploadI
 
   return (
     <div className="media-dragger">
-      <Dragger {...props}>
+      <Dragger maxCount={1} action={`${API_URL}/${url_folder}`} {...props}>
         <p className="ant-upload-drag-icon">
           <InboxOutlined />
         </p>
-        <p className="ant-upload-text">클릭 또는 업로드 할 영상을 끌어서 놔주세요.</p>
-        <p className="ant-upload-hint">용량 사이즈는 작을 수록 좋습니다.</p>
+        <p className="ant-upload-text">{`업로드 하실 ${upload_text}을 드래그 또는 클릭해서 업로드 해주세요.`}</p>
+        <p className="ant-upload-hint">용량 사이즈는 작을수록 좋습니다.</p>
       </Dragger>
     </div>
   );
