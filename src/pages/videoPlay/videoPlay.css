@@ -1,0 +1,22 @@
+:root {
+  --side-color: #212121;
+  --center-color: #1b1b1b;
+}
+
+.videoPlay-body {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.videoPlay-center {
+  background-color: var(--center-color);
+  min-height: 100vh;
+  width: 75%;
+}
+
+.videoPlay-side {
+  background-color: var(--side-color);
+  min-height: 100vh;
+  width: 25%;
+}

@@ -2,8 +2,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../header/header.css";
-
-const imgFolderUrl = "images/icons/";
+import HeaderLogo from "../../images/header_logo.png";
+import MagnifyGlass from "../../images/icons/magnifyGlass.png";
+import UserIcon from "../../images/icons/user_icon.png";
+import VideoUploadIcon from "../../images/icons/video_add_icon.png";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -45,21 +47,21 @@ function Header() {
       <div className="header-group">
         <div className="logo-group">
           <Link to="/home">
-            <img src="images/header_logo.png" alt="비어 있음" />
+            <img src={HeaderLogo} alt="비어 있음" />
           </Link>
         </div>
         <div className="input-group" style={toggleClick ? { display: "flex" } : { display: "none" }}>
           <input placeholder=" 검색" type="text" value={search} onChange={searched} onKeyDown={searchOnClickListener} />
           <button onClick={searchOnClickListener}>
-            <img src={`${imgFolderUrl}magnifyGlass.png`} alt="비어있음" />
+            <img src={MagnifyGlass} alt="비어있음" />
           </button>
         </div>
         <div className="header-menu-group" style={toggleClick ? { display: "flex" } : { display: "none" }}>
           <Link to="/login">
-            <img src={`${imgFolderUrl}user_icon.png`} alt="비어있음" />
+            <img src={UserIcon} alt="비어있음" />
           </Link>
           <Link to="/videoupload">
-            <img src={`${imgFolderUrl}video_add_icon.png`} alt="비어있음" />
+            <img src={VideoUploadIcon} alt="비어있음" />
           </Link>
         </div>
         <div className="header_toggleButton" onClick={toggleButtonClicked}>

@@ -40,8 +40,8 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
       <Dragger
         beforeUpload={(file) => {
           let typeConfirm = true;
-          if (file.type != "video/mp4" && mediaFile == "video") {
-            message.error("png 파일이 아닌 mp4 파일만 가능합니다.");
+          if (file.type != "video/mp4" && file.type != "video/quicktime" && mediaFile == "video") {
+            message.error("mp4 또는 mov 파일만 가능합니다.");
             typeConfirm = false;
           } else if (file.type != "image/png" && mediaFile == "image") {
             message.error("mp4 파일이 아닌 png 파일만 가능합니다.");
