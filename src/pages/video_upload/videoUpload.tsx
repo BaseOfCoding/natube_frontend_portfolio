@@ -3,10 +3,11 @@ import "antd/dist/antd.css";
 import { Select, Input, Button, Divider, message } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import { MediaUploadForm, VideoUploadEachDivide } from "../../components/props/props";
 import { API_URL, tagEngValues, tagValues } from "../../utils/values";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { VideoUploadEachDivide } from "../../props/VideoUploadEachDivide";
+import { MediaUploadForm } from "../../props/MediaUploadForm";
 
 const { Option } = Select;
 
@@ -32,7 +33,6 @@ function VideoUploadPage() {
 
   const uploadConfirm = () => {
     if (video == "" || thumbnail == "" || title == "" || description == "" || tag == "") {
-      console.log(video);
       message.error("빈칸이 있습니다. 빈칸을 입력해주세요.", 1.0);
     } else {
       axios
@@ -42,9 +42,11 @@ function VideoUploadPage() {
           title: title,
           description: description,
           tag: tag,
+          nickname: "익명 사용자",
+          view: 0,
         })
         .then((res) => {
-          console.log(res);
+          message.success("업로드 완료", 3.0);
           history.replace("/");
         })
         .catch((err) => {
@@ -60,12 +62,26 @@ function VideoUploadPage() {
         <Divider />
         <VideoUploadEachDivide
           title="1. 비디오 업로드"
-          htmlTag={<MediaUploadForm mediaFile="video" setState={setVideo} url_folder="videos" upload_text="영상" />}
+          htmlTag={
+            <MediaUploadForm
+              mediaFile="video"
+              setState={setVideo}
+              url_folder="videos"
+              upload_text="영상"
+              type_text="mp4"
+            />
+          }
         />
         <VideoUploadEachDivide
           title="2. 썸네일 업로드"
           htmlTag={
-            <MediaUploadForm mediaFile="image" setState={setThumbnail} url_folder="thumbnails" upload_text="썸네일" />
+            <MediaUploadForm
+              mediaFile="image"
+              setState={setThumbnail}
+              url_folder="thumbnails"
+              upload_text="썸네일"
+              type_text="png"
+            />
           }
         />
         <VideoUploadEachDivide

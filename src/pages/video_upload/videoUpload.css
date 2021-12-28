@@ -48,7 +48,7 @@
 
 #video-title {
   width: 90%;
-  height: 100px;
+  height: 55px;
 }
 
 #video-description {
@@ -80,6 +80,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
 
