@@ -24,7 +24,6 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
         message.success(`${info.file.name} 파일 업로드 성공!`, 2.0);
         const response = info.file.response;
         var fileUrl = mediaFile === "video" ? response.videoUrl : response.thumbnailUrl;
-        console.log(`${API_URL}/${fileUrl}`);
         setState(`${API_URL}/${fileUrl}`);
       } else if (status === "error") {
         message.error(`${info.file.name} 파일 업로드 실패!`, 2.0);
@@ -40,11 +39,13 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
       <Dragger
         beforeUpload={(file) => {
           let typeConfirm = true;
-          if (file.type != "video/mp4" && file.type != "video/quicktime" && mediaFile == "video") {
-            message.error("mp4 또는 mov 파일만 가능합니다.");
+          let splitAfterType = file.type.split("/");
+
+          if (splitAfterType[0] != "video" && mediaFile == "video") {
+            message.error("비디오 파일만 업로드가 가능합니다.");
             typeConfirm = false;
-          } else if (file.type != "image/png" && mediaFile == "image") {
-            message.error("mp4 파일이 아닌 png 파일만 가능합니다.");
+          } else if (splitAfterType[0] != "image" && mediaFile == "image") {
+            message.error("이미지 파일만 업로드가 가능합니다.");
             typeConfirm = false;
           }
           return typeConfirm ? true : Upload.LIST_IGNORE;

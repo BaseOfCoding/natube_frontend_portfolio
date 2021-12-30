@@ -20,3 +20,92 @@
   min-height: 100vh;
   width: 25%;
 }
+
+.videoPlayer {
+  width: 100%;
+  /* margin-top: 15px; */
+}
+
+.videoPlay-info-group {
+  margin-top: 10px;
+}
+
+.videoPlay-info-title {
+  font-size: 20px;
+  color: white;
+  margin-left: 20px;
+  font-weight: 700;
+}
+
+.videoPlay-info-divide {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.videoPlay-info-view-date {
+  width: 50%;
+  display: flex;
+}
+
+.videoPlay-info-view {
+  color: gray;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.videoPlay-info-date {
+  color: gray;
+  font-weight: 700;
+}
+
+.videoPlay-info-buttonGroup {
+  width: 50%;
+  display: flex;
+  justify-content: right;
+}
+
+.videoPlay-info-buttonGroup > button {
+  background-color: var(--center-color);
+  border: none;
+  height: 100%;
+}
+
+.videoPlay-info-buttonGroup > button:hover {
+  background-color: var(--center-color);
+}
+
+@media screen and (max-width: 768px) {
+  .videoPlay-center {
+    width: 100%;
+  }
+
+  .videoPlay-side {
+    width: 0%;
+  }
+
+  .videoPlay-info-divide {
+    flex-direction: column;
+  }
+
+  .videoPlay-info-view-date {
+    width: 100%;
+    display: flex;
+  }
+
+  .videoPlay-info-buttonGroup {
+    margin-left: 4px;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+  }
+
+  .videoPlay-info-buttonGroup > button {
+    background-color: var(--center-color);
+    border: none;
+    height: 100%;
+  }
+}

@@ -3,6 +3,7 @@
   --center-color: #1b1b1b;
   --button-background-color: #373737;
   --video-font-size: 12px;
+  --max-width-size: 220px;
 }
 
 .home-body {
@@ -13,7 +14,6 @@
 
 .home-side {
   background-color: var(--side-color);
-  min-height: 100vh;
   position: relative;
   width: 10%;
   border-right: 1px black solid;
@@ -21,7 +21,6 @@
 
 .home-center {
   background-color: var(--center-color);
-  min-height: 100vh;
   position: relative;
   width: 90%;
 }
@@ -37,12 +36,12 @@
 
 .home-button-group > button {
   min-width: 70px;
-  height: 30px;
+  min-height: 30px;
   border-radius: 20px;
   background-color: var(--button-background-color);
-  color: white;
   font-size: 14px;
   font-weight: 700;
+  color: white;
   margin: 10px 10px;
 }
 
@@ -51,22 +50,32 @@
   flex-wrap: wrap;
 }
 
+.home-video-link {
+  margin: 10px 10px;
+  border: 1px solid gray;
+  border-radius: 30px;
+}
+
 .video-group {
   min-width: 20%;
   margin: 30px 30px;
-  max-width: 260px;
+  max-width: var(--max-width-size);
   max-height: 500px;
 }
 
 .thumbnail-image {
-  min-width: 260px;
-  max-height: 190px;
+  min-width: var(--max-width-size);
+  max-width: var(--max-width-size);
+  min-height: 140px;
+  max-height: 140px;
 }
 
 .video-media-info-group {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
+  max-width: var(--max-width-size);
+  max-height: 100px;
 }
 
 .profile-image {
@@ -81,6 +90,7 @@
   display: flex;
   flex-direction: column;
   margin: 5px 10px;
+  max-width: 80%;
 }
 
 .video-title {
@@ -97,7 +107,7 @@
 .video-uploader {
   color: gray;
   font-size: var(--video-font-size);
-  font-weight: 600;
+  font-weight: 800;
 }
 
 .video-upload-view {
@@ -122,17 +132,14 @@
   }
 
   .home-button-group {
-    align-items: unset;
-    justify-content: unset;
+    align-items: center;
+    justify-content: center;
   }
-  /* .home-button-group::-webkit-scrollbar {
-    display: none;
-  } */
 }
 
 @media screen and (max-width: 768px) {
-  .home-videoView-group {
-    align-items: center;
-    justify-content: center;
+  .home-button-group {
+    align-items: unset;
+    justify-content: unset;
   }
 }

@@ -68,7 +68,7 @@ function VideoUploadPage() {
               setState={setVideo}
               url_folder="videos"
               upload_text="영상"
-              type_text="mp4"
+              type_text="비디오"
             />
           }
         />
@@ -80,7 +80,7 @@ function VideoUploadPage() {
               setState={setThumbnail}
               url_folder="thumbnails"
               upload_text="썸네일"
-              type_text="png"
+              type_text="이미지"
             />
           }
         />

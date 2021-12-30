@@ -11,7 +11,7 @@ dayjs.locale("ko");
 export function VideoView(props: { data: any }) {
   const videoData = props.data;
   return (
-    <Link to={`/videoplay/${videoData.id}`}>
+    <Link className="home-video-link" to={`/videoplay/${videoData.id}`}>
       <div className="video-group">
         <img className="thumbnail-image" src={videoData.thumbnailUrl} alt="X" />
         <div className="video-media-info-group">
