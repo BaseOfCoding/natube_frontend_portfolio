@@ -21,12 +21,12 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
       const { status } = info.file;
 
       if (status === "done") {
-        message.success(`${info.file.name} 파일 업로드 성공!`, 2.0);
+        message.success("파일 업로드 성공!", 2.0);
         const response = info.file.response;
         var fileUrl = mediaFile === "video" ? response.videoUrl : response.thumbnailUrl;
         setState(`${API_URL}/${fileUrl}`);
       } else if (status === "error") {
-        message.error(`${info.file.name} 파일 업로드 실패!`, 2.0);
+        message.error("파일 업로드 실패!", 2.0);
       }
     },
     onDrop(e: any) {

@@ -7,7 +7,7 @@ import { VideoView } from "../../props/VideoView";
 function Home() {
   const [videoDatas, setVideoData] = useState([]);
 
-  useEffect(() => {
+  const getVideoInfo = () => {
     axios
       .get(`${API_URL}/videomain`)
       .then((result) => {
@@ -17,7 +17,7 @@ function Home() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  };
 
   const tagOnClickListener = useCallback((e) => {
     // const tag = e.target.value;
@@ -30,6 +30,11 @@ function Home() {
     //   .catch((err) => {
     //     console.error(err);
     //   });
+  }, []);
+
+  useEffect(() => {
+    localStorage.clear();
+    getVideoInfo();
   }, []);
 
   function TagSelect() {
