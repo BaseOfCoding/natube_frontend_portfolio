@@ -1,25 +1,27 @@
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 export function VideoRecommendation(props: any) {
   const data = props.data;
-  console.log(data);
   return (
-    <div className="recommendation-group">
-      <div className="recommendation-thumbnail">
-        <img src={data.thumbnailUrl} alt="X" />
-      </div>
-      <div className="recommendation-info-group">
-        <div className="recommendation-title-nickname">
-          <span className="recommendation-title">{data.title}</span>
-          <span className="recommendation-nickname">{data.nickname}</span>
+    <Link to={`/videoplay/${data.id}`}>
+      <div className="recommendation-group">
+        <div className="recommendation-thumbnail">
+          <img src={data.thumbnailUrl} alt="X" />
         </div>
-        <div className="recommendation-nickname-view-date">
-          <span className="recommendation-view">{ViewToCalculateString(data.view)}</span>
-          <span style={{ fontSize: 14, fontWeight: 900, color: "gray" }}>﹒</span>
-          <span className="recommendation-date">{dayjs(data.createdAt).fromNow()}</span>
+        <div className="recommendation-info-group">
+          <div className="recommendation-title-nickname">
+            <span className="recommendation-title">{data.title}</span>
+            <span className="recommendation-nickname">{data.nickname}</span>
+          </div>
+          <div className="recommendation-nickname-view-date">
+            <span className="recommendation-view">{ViewToCalculateString(data.view)}</span>
+            <span style={{ fontSize: 14, fontWeight: 900, color: "gray" }}>﹒</span>
+            <span className="recommendation-date">{dayjs(data.createdAt).fromNow()}</span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

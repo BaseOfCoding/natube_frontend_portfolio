@@ -69,8 +69,13 @@ function VideoPlay(props: any) {
       <div className="videoPlay-body">
         <div className="videoPlay-center">
           <VideoPlayer data={video} />
+          <div className={"videoPlay-mobile-side"}>
+            {recommendationVideo.map((data, index) => {
+              return <VideoRecommendation data={data} index={index} />;
+            })}
+          </div>
         </div>
-        <div className="videoPlay-side">
+        <div className={"videoPlay-pc-side"}>
           {recommendationVideo.map((data, index) => {
             return <VideoRecommendation data={data} index={index} />;
           })}

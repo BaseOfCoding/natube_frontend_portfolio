@@ -6,6 +6,7 @@ import HeaderLogo from "../../images/header_logo.png";
 import MagnifyGlass from "../../images/icons/magnifyGlass.png";
 import UserIcon from "../../images/icons/user_icon.png";
 import VideoUploadIcon from "../../images/icons/video_add_icon.png";
+import { WindowSizeCompareMoblie } from "../../props/WindowSizeCompareMoblie";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -15,26 +16,28 @@ function Header() {
     setSearch(e.target.value);
   }, []);
 
-  const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerWidth });
+  WindowSizeCompareMoblie(setToggleClick);
 
-  useEffect(() => {
-    let resizeTimer: NodeJS.Timeout;
-    let windowSizer = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        setWindowSize({ width: document.body.clientWidth, height: document.body.clientHeight });
-      }, 200);
-    };
-    window.addEventListener("resize", windowSizer);
+  // const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerWidth });
 
-    return () => {
-      window.removeEventListener("resize", windowSizer);
-    };
-  }, [windowSize]);
+  // useEffect(() => {
+  //   let resizeTimer: NodeJS.Timeout;
+  //   let windowSizer = () => {
+  //     clearTimeout(resizeTimer);
+  //     resizeTimer = setTimeout(() => {
+  //       setWindowSize({ width: document.body.clientWidth, height: document.body.clientHeight });
+  //     }, 200);
+  //   };
+  //   window.addEventListener("resize", windowSizer);
 
-  useEffect(() => {
-    windowSize.width > 767 ? setToggleClick(true) : setToggleClick(false);
-  }, [windowSize.width]);
+  //   return () => {
+  //     window.removeEventListener("resize", windowSizer);
+  //   };
+  // }, [windowSize]);
+
+  // useEffect(() => {
+  //   windowSize.width > 767 ? setToggleClick(true) : setToggleClick(false);
+  // }, [windowSize.width]);
 
   function toggleButtonClicked() {
     setToggleClick((toggleClick) => !toggleClick);
