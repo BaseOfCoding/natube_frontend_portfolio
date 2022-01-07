@@ -1,39 +1,55 @@
-import { useEffect, useState } from "react";
-import Cookies from "universal-cookie";
-const cookies = new Cookies();
+import axios from "axios";
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { Cookies } from "react-cookie";
+import { API_URL } from "./values";
 
-export function setRefreshTokenToCookie(refresh_token: string) {
-  cookies.set("login", refresh_token, {
-    sameSite: "strict",
-    path: "/",
-    maxAge: Math.floor(Date.now() / 1000) + 60 * 60,
-  });
+export interface User_Data {
+  user_id: string;
+  nickname: string;
+  profileURL: string;
 }
 
-export function logout() {
-  console.log("localstorage set logout!!");
-  window.localStorage.setItem("logout", Date.now().toString());
-  cookies.remove("refresh_token");
+let user_data: User_Data;
+
+export const Auth = async () => {
+  const cookies = new Cookies();
+  try {
+    const result = await axios.post(`${API_URL}/users/auth`, {
+      cookie: cookies.get("x_auth"),
+    });
+    return result.data;
+  } catch (e) {
+    console.log("인증 실패");
+    return e;
+  }
+};
+
+export function SetUserData(result: any) {
+  let userData = result.user_data;
+  user_data = {
+    user_id: userData.user_id.toString(),
+    nickname: userData.nickname.toString(),
+    profileURL: userData.profileUrl.toString(),
+  };
+  // console.log(user_data);
 }
 
-// export function LoginCofirm(): boolean {
-//   const [temp_id, setTempId] = useState("");
-//   const [logined, setLogined] = useState(false);
-//   var num = 0;
+export function GetUserData(): User_Data {
+  return user_data;
+}
 
-//   function loginConfirm() {
-//     setTempId(cookies.get("login"));
-//     if (temp_id) {
-//       setLogined(true);
-//     } else {
-//       setLogined(false);
-//     }
-//   }
+export function PageAuth(setLogin: Dispatch<SetStateAction<boolean>>) {
+  useEffect(() => {
+    Auth().then((result) => {
+      if (result != "error") {
+        SetUserData(result);
+        setLogin(true);
+      }
+    });
+  }, []);
+}
 
-//   useEffect(() => {
-//     console.log(num++);
-//     loginConfirm();
-//   }, []);
-
-//   return logined;
-// }
+export function Logout() {
+  const cookies = new Cookies();
+  cookies.remove("x_auth");
+}

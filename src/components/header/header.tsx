@@ -13,6 +13,7 @@ import { LoginModal } from "../../props/LoginModal";
 function Header() {
   const [search, setSearch] = useState("");
   const [toggleClick, setToggleClick] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
   const searched = useCallback((e) => {
     setSearch(e.target.value);
@@ -20,26 +21,9 @@ function Header() {
 
   WindowSizeCompareMoblie(setToggleClick);
 
-  // const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerWidth });
-
-  // useEffect(() => {
-  //   let resizeTimer: NodeJS.Timeout;
-  //   let windowSizer = () => {
-  //     clearTimeout(resizeTimer);
-  //     resizeTimer = setTimeout(() => {
-  //       setWindowSize({ width: document.body.clientWidth, height: document.body.clientHeight });
-  //     }, 200);
-  //   };
-  //   window.addEventListener("resize", windowSizer);
-
-  //   return () => {
-  //     window.removeEventListener("resize", windowSizer);
-  //   };
-  // }, [windowSize]);
-
-  // useEffect(() => {
-  //   windowSize.width > 767 ? setToggleClick(true) : setToggleClick(false);
-  // }, [windowSize.width]);
+  function loginModalOnClickListener() {
+    setLoginModal((loginModal) => !loginModal);
+  }
 
   function toggleButtonClicked() {
     setToggleClick((toggleClick) => !toggleClick);
@@ -49,7 +33,7 @@ function Header() {
 
   return (
     <div>
-      <LoginModal />
+      {loginModal ? <LoginModal stateFunction={setLoginModal} /> : ""}
       <div className="header-group">
         <div className="logo-group">
           <Link to="/home">
@@ -63,9 +47,7 @@ function Header() {
           </button>
         </div>
         <div className="header-menu-group" style={toggleClick ? { display: "flex" } : { display: "none" }}>
-          <Link to="/login">
-            <img src={UserIcon} alt="비어있음" />
-          </Link>
+          <img src={UserIcon} alt="비어있음" onClick={loginModalOnClickListener} />
           <Link to="/videoupload">
             <img src={VideoUploadIcon} alt="비어있음" />
           </Link>

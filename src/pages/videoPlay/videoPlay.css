@@ -12,13 +12,13 @@
 .videoPlay-center {
   background-color: var(--center-color);
   min-height: 100vh;
-  width: 75%;
+  width: 80%;
 }
 
 .videoPlay-pc-side {
   background-color: var(--side-color);
   min-height: 100vh;
-  width: 25%;
+  width: 20%;
   display: block;
 }
 
@@ -31,6 +31,8 @@
 
 .videoPlayer {
   width: 100%;
+  height: auto;
+  max-height: 1000px;
 }
 
 .videoPlay-info-group {
