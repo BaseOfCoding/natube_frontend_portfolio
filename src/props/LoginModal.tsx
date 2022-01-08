@@ -30,9 +30,11 @@ export function LoginModal(props: any) {
         } else if (result.data == "undefined") {
           message.error("입력란에 빈값이 존재합니다.");
         } else {
-          message.success(`${result.data.resultData.nickname} 님 로그인하신 것을 환영합니다.`);
-          history.replace("/");
-          setLoginModal(false);
+          message.success(`${result.data.resultData.nickname} 님 로그인하신 것을 환영합니다.`, 0.2).then(() => {
+            history.replace("/");
+            window.location.replace("/");
+            setLoginModal(false);
+          });
         }
       })
       .catch((err) => {
@@ -51,11 +53,13 @@ export function LoginModal(props: any) {
   }
 
   function logoutClickListener() {
-    message.success(`로그아웃이 되었습니다. ${GetUserData().nickname}님 다시 돌아오시길 기다릴게요.`);
-    Logout();
-    setLogin(false);
-    history.replace("/");
-    setLoginModal(false);
+    message.success(`로그아웃이 되었습니다. ${GetUserData().nickname}님 다시 돌아오시길 기다릴게요.`, 0.2).then(() => {
+      Logout();
+      setLogin(false);
+      history.replace("/");
+      window.location.replace("/");
+      setLoginModal(false);
+    });
   }
 
   function LoginJSXElement(props: any) {
@@ -92,7 +96,12 @@ export function LoginModal(props: any) {
       <div className="login-modal-background" />
       <div className="login-modal-column">
         {logined ? (
-          <img src={GetUserData().profileURL} alt="x" style={{ borderRadius: 100 }} />
+          <>
+            <img src={GetUserData().profileURL} alt="x" style={{ borderRadius: 100 }} />
+            <span style={{ color: "white", marginBottom: 10, fontWeight: 800 }}>{`"${
+              GetUserData().nickname
+            }" 님 환영합니다.`}</span>
+          </>
         ) : (
           <img src={HeaderLogo} alt="x" />
         )}

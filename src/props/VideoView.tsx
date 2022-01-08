@@ -8,14 +8,18 @@ dayjs.locale("ko");
 
 // jsx prop
 
-export function VideoView(props: { data: any }) {
+export function VideoView(props: any) {
   const videoData = props.data;
   return (
     <Link className="home-video-link" to={`/videoplay/${videoData.id}`}>
       <div className="video-group">
         <img className="thumbnail-image" src={videoData.thumbnailUrl} alt="X" />
         <div className="video-media-info-group">
-          <img className="profile-image" src="images/icons/user_icon.png" alt="X" />
+          <img
+            className="profile-image"
+            src={videoData.profileUrl != null ? videoData.profileUrl : "images/icons/user_icon.png"}
+            alt="X"
+          />
           <div className="video-info">
             <span className="video-title">{videoData.title}</span>
             <span className="video-uploader">{videoData.nickname}</span>

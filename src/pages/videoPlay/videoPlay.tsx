@@ -13,9 +13,7 @@ function VideoPlay(props: any) {
   const viewUpdate = () => {
     axios
       .get(`${API_URL}/viewupdate/${id}`)
-      .then((result) => {
-        console.log(result);
-      })
+      .then(() => {})
       .catch((err) => {
         console.error(err);
       });

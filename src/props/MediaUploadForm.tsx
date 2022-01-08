@@ -1,6 +1,6 @@
 import { InboxOutlined } from "@ant-design/icons";
 import { message, Upload } from "antd";
-import { API_URL } from "../utils/values";
+import { API_URL, MEDIA_URL } from "../utils/values";
 
 interface IMediaUploadInfo {
   mediaFile: string;
@@ -24,7 +24,7 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
         message.success("파일 업로드 성공!", 2.0);
         const response = info.file.response;
         var fileUrl = mediaFile === "video" ? response.videoUrl : response.thumbnailUrl;
-        setState(`${API_URL}/${fileUrl}`);
+        setState(`${MEDIA_URL}${fileUrl}`);
       } else if (status === "error") {
         message.error("파일 업로드 실패!", 2.0);
       }
@@ -51,7 +51,7 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
           return typeConfirm ? true : Upload.LIST_IGNORE;
         }}
         maxCount={1}
-        action={`${API_URL}/${url_folder}`}
+        action={`${API_URL}/media/${url_folder}`}
         {...props}
       >
         <p className="ant-upload-drag-icon">

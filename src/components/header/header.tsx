@@ -9,11 +9,13 @@ import UserIcon from "../../images/icons/user_icon.png";
 import VideoUploadIcon from "../../images/icons/video_add_icon.png";
 import { WindowSizeCompareMoblie } from "../../props/WindowSizeCompareMoblie";
 import { LoginModal } from "../../props/LoginModal";
+import { GetUserData, PageAuth } from "../../utils/Auth";
 
 function Header() {
   const [search, setSearch] = useState("");
   const [toggleClick, setToggleClick] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+  const [logined, setLogin] = useState(false);
 
   const searched = useCallback((e) => {
     setSearch(e.target.value);
@@ -31,6 +33,8 @@ function Header() {
 
   const searchOnClickListener = () => {};
 
+  PageAuth(setLogin);
+
   return (
     <div>
       {loginModal ? <LoginModal stateFunction={setLoginModal} /> : ""}
@@ -47,7 +51,7 @@ function Header() {
           </button>
         </div>
         <div className="header-menu-group" style={toggleClick ? { display: "flex" } : { display: "none" }}>
-          <img src={UserIcon} alt="비어있음" onClick={loginModalOnClickListener} />
+          <img src={logined ? GetUserData().profileURL : UserIcon} alt="비어있음" onClick={loginModalOnClickListener} />
           <Link to="/videoupload">
             <img src={VideoUploadIcon} alt="비어있음" />
           </Link>
