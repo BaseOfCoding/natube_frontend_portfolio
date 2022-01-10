@@ -33,7 +33,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    localStorage.clear();
+    localStorage.removeItem("refresh");
     getVideoInfo();
   }, []);
 

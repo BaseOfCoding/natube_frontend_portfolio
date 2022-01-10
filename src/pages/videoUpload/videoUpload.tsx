@@ -8,7 +8,7 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import { VideoUploadEachDivide } from "../../props/VideoUploadEachDivide";
 import { MediaUploadForm } from "../../props/MediaUploadForm";
-import { GetUserData, PageAuth } from "../../utils/Auth";
+import { GetUserData, PageAuth } from "../../props/auth";
 
 const { Option } = Select;
 

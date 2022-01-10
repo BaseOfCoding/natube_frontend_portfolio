@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { Cookies } from "react-cookie";
-import { API_URL } from "./values";
+import { API_URL } from "../utils/values";
 
 export interface User_Data {
   user_id: string;
@@ -15,7 +15,7 @@ export const Auth = async () => {
   const cookies = new Cookies();
   try {
     const result = await axios.post(`${API_URL}/users/auth`, {
-      cookie: cookies.get("x_auth"),
+      cookie: localStorage.getItem("authToken"),
     });
     return result.data;
   } catch (e) {

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import HeaderLogo from "../images/header_logo.png";
-import { GetUserData, Logout, PageAuth } from "../utils/Auth";
+import { GetUserData, Logout, PageAuth } from "./auth";
 import { API_URL } from "../utils/values";
 
 export function LoginModal(props: any) {
@@ -31,6 +31,7 @@ export function LoginModal(props: any) {
           message.error("입력란에 빈값이 존재합니다.");
         } else {
           message.success(`${result.data.resultData.nickname} 님 로그인하신 것을 환영합니다.`, 0.2).then(() => {
+            localStorage.setItem("authToken", result.data.resultData.token);
             history.replace("/");
             window.location.replace("/");
             setLoginModal(false);

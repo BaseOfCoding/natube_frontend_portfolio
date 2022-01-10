@@ -9,7 +9,7 @@ import UserIcon from "../../images/icons/user_icon.png";
 import VideoUploadIcon from "../../images/icons/video_add_icon.png";
 import { WindowSizeCompareMoblie } from "../../props/WindowSizeCompareMoblie";
 import { LoginModal } from "../../props/LoginModal";
-import { GetUserData, PageAuth } from "../../utils/Auth";
+import { GetUserData, PageAuth } from "../../props/auth";
 
 function Header() {
   const [search, setSearch] = useState("");
