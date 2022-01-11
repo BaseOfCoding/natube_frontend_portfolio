@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Dispatch, SetStateAction, useEffect } from "react";
-import { Cookies } from "react-cookie";
 import { API_URL } from "../utils/values";
 
 export interface User_Data {
@@ -12,10 +11,9 @@ export interface User_Data {
 let user_data: User_Data;
 
 export const Auth = async () => {
-  const cookies = new Cookies();
   try {
     const result = await axios.post(`${API_URL}/users/auth`, {
-      cookie: localStorage.getItem("authToken"),
+      token: localStorage.getItem("authToken"),
     });
     return result.data;
   } catch (e) {
@@ -31,7 +29,6 @@ export function SetUserData(result: any) {
     nickname: userData.nickname.toString(),
     profileURL: userData.profileUrl.toString(),
   };
-  // console.log(user_data);
 }
 
 export function GetUserData(): User_Data {
@@ -42,14 +39,16 @@ export function PageAuth(setLogin: Dispatch<SetStateAction<boolean>>) {
   useEffect(() => {
     Auth().then((result) => {
       if (result != "error") {
+        localStorage.setItem("user_data", JSON.stringify(result));
         SetUserData(result);
         setLogin(true);
+      } else {
+        return;
       }
     });
   }, []);
 }
 
 export function Logout() {
-  const cookies = new Cookies();
-  cookies.remove("x_auth");
+  localStorage.removeItem("authToken");
 }

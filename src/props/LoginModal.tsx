@@ -15,6 +15,7 @@ export function LoginModal(props: any) {
   const [logined, setLogin] = useState(false);
 
   function loginClickListener() {
+    console.log(password.current?.value);
     axios
       .post(
         `${API_URL}/users/signin`,
@@ -44,9 +45,9 @@ export function LoginModal(props: any) {
   }
 
   function signUpClickListener() {
-    // history.replace("/signup");
-    // props.setState(false);
-    // console.log(GetUserData().user_id);
+    history.replace("/signup");
+    window.location.replace("/signup");
+    setLoginModal(false);
   }
 
   function BackbuttonClickListener() {
@@ -54,6 +55,8 @@ export function LoginModal(props: any) {
   }
 
   function logoutClickListener() {
+    // console.log(localStorage.getItem("user_data"));
+    // let wow = JSON.parse(localStorage.getItem("user_data") || "{}");
     message.success(`로그아웃이 되었습니다. ${GetUserData().nickname}님 다시 돌아오시길 기다릴게요.`, 0.2).then(() => {
       Logout();
       setLogin(false);
