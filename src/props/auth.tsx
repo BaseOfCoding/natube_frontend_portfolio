@@ -27,7 +27,7 @@ export function SetUserData(result: any) {
   user_data = {
     user_id: userData.user_id.toString(),
     nickname: userData.nickname.toString(),
-    profileURL: userData.profileUrl.toString(),
+    profileURL: userData.profileUrl != null ? userData.profileUrl.toString() : "../images/icons/user_icon.png",
   };
 }
 

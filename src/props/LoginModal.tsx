@@ -32,7 +32,7 @@ export function LoginModal(props: any) {
           message.error("입력란에 빈값이 존재합니다.");
         } else {
           message.success(`${result.data.resultData.nickname} 님 로그인하신 것을 환영합니다.`, 0.2).then(() => {
-            localStorage.setItem("authToken", result.data.resultData.token);
+            localStorage.setItem("authToken", result.data.token);
             history.replace("/");
             window.location.replace("/");
             setLoginModal(false);
@@ -101,7 +101,11 @@ export function LoginModal(props: any) {
       <div className="login-modal-column">
         {logined ? (
           <>
-            <img src={GetUserData().profileURL} alt="x" style={{ borderRadius: 100 }} />
+            <img
+              src={GetUserData().profileURL == "" ? HeaderLogo : GetUserData().profileURL}
+              alt="x"
+              style={{ borderRadius: 100 }}
+            />
             <span style={{ color: "white", marginBottom: 10, fontWeight: 800 }}>{`"${
               GetUserData().nickname
             }" 님 환영합니다.`}</span>
