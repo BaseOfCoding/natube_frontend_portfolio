@@ -26,7 +26,7 @@ export function VideoView(props: any) {
             <div className="video-upload-and-date">
               <span className="video-upload-view">{ViewToCalculateString(videoData.view)}</span>
               <span style={{ fontSize: 14, fontWeight: 900, color: "gray" }}>﹒</span>
-              <span className="video-upload-date">{dayjs(videoData.updatedAt).fromNow()}</span>
+              <span className="video-upload-date">{dayjs(videoData.createdAt).fromNow()}</span>
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+// import 영역
 import "./signup.css";
 import userIcon from "../../images/icons/user_icon.png";
 import { message, Tooltip, Upload } from "antd";
@@ -6,15 +7,20 @@ import { API_URL, MEDIA_URL } from "../../utils/values";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+// 회원가입 페이지를 렌더링 하는 함수
 function SignUp() {
+  // useState를 사용하면, useState가 변경이 되면서, 재렌더링을 하기 때문에, 전부 입력되었을 때의 값만 있으면 되서, useRef 훅을 사용해서 해당 값만 빼오게 하기 위해 사용. 그리고 각각의 input에 추가.
   const user_id = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
   const confirmPassword = useRef<HTMLInputElement>(null);
   const nickname = useRef<HTMLInputElement>(null);
+
+  // 프로필 imageURL 변수와, 가입 버튼을 두 번 누르게 하는 것을 방지하기 위한 변수, react-router-dom에서 제공하는 useHistory 함수를 선언
   const [imageURL, setImageURL] = useState("");
   const [submit, setSubmit] = useState(false);
   const history = useHistory();
 
+  // 프로필 이미지를 업로드 할 때 사용되는 onChange 속성 함수, file이 업로드가 완료된다면, imageURL에 해당 프로필이 저장된 url로 변경한다.
   const onChangeProfile = (info: any) => {
     const file = info.file;
 
@@ -29,6 +35,7 @@ function SignUp() {
     }
   };
 
+  // 프로필 이미지를 업로드하기 전에, 만약 image 파일이 맞는 지 아닌 지를 확인한다.
   const beforeUpload = (file: any) => {
     let typeConfirm = true;
     let splitAfterType = file.type.split("/");
@@ -41,11 +48,16 @@ function SignUp() {
     return typeConfirm ? true : Upload.LIST_IGNORE;
   };
 
+  // email 형식인 지 아닌 지를 체크한다.
   const emailChecking = (email: string) => {
     var regex = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     return email != "" && email != "undefined" && regex.test(email);
   };
 
+  /* 
+  가입 버튼을 클릭했을 때 실행되는 함수, 1차로 빈칸이 있는 지를 검사하고, 2차로 패스워드와 패스워드 확인의 값이 맞는 지를 체크하고,
+  3차로, 이메일 형식인지 아닌지를 체크, 다 맞다면 서버에서 아이디와 닉네임이 중복되었는 지를 체크한뒤, 다 검사 완료 되었을 때 회원가입이 된다.
+  */
   const signUpSubmit = () => {
     setSubmit(true);
     if (
