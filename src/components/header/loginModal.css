@@ -1,3 +1,6 @@
+/* 로그인 모달 관련 css */
+
+/* position 속성의 값을 fixed로 해서 고정으로 만들어주고, z-index를 1로 만들어, 모든 ui들 보다 가장 앞에 있게 만든다. */
 .login-modal {
   position: fixed;
   top: 0;
@@ -10,13 +13,14 @@
   z-index: 1;
 }
 
+/* 모달 페이지의 background */
 .login-modal-background {
   width: 100%;
   height: 100%;
-  background-color: gray;
-  opacity: 0.7;
+  background-color: rgba(128, 128, 128, 0.2);
 }
 
+/* 모달 페이지의 이미지, input, button을 감싸고 있는 부모 */
 .login-modal-column {
   position: absolute;
   display: flex;
@@ -25,12 +29,15 @@
   align-items: center;
 }
 
+/* 프로필 또는 로그인 시, Natube의 로고를 보여주는 이미지 */
 .login-modal-column > img {
   margin-bottom: 20px;
   width: 200px;
   height: auto;
   border-radius: 15px;
 }
+
+/* input 영역 */
 
 .login-modal-input-group {
   margin-top: 10px;
@@ -40,6 +47,8 @@
   width: 250px;
   height: 30px;
 }
+
+/* 버튼 영역 */
 
 .login-modal-button-group {
   margin-top: 20px;

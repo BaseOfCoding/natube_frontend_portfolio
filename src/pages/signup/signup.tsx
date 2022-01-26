@@ -106,7 +106,7 @@ function SignUp() {
           <Upload
             name="image"
             beforeUpload={beforeUpload}
-            action={`${API_URL}/media/profileImages`}
+            action={`${API_URL}/uploads/profileImages`}
             listType="picture"
             showUploadList={false}
             maxCount={1}

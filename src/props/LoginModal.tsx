@@ -1,3 +1,5 @@
+// import 영역
+
 import { LeftSquareOutlined } from "@ant-design/icons";
 import { Button, message } from "antd";
 import axios from "axios";
@@ -7,6 +9,7 @@ import HeaderLogo from "../images/header_logo.png";
 import { GetUserData, Logout, PageAuth } from "./auth";
 import { API_URL } from "../utils/values";
 
+// 로그인 모달 페이지를 렌더링 해줄 함수. props를 이용해서, 해당 JSX 형태의 태그에서 보내는 값을 받아 사용한다.
 export function LoginModal(props: any) {
   const setLoginModal = props.stateFunction;
   const user_id = useRef<HTMLInputElement>(null);
@@ -104,7 +107,7 @@ export function LoginModal(props: any) {
             <img
               src={GetUserData().profileURL == "" ? HeaderLogo : GetUserData().profileURL}
               alt="x"
-              style={{ borderRadius: 100 }}
+              style={{ borderRadius: "50%" }}
             />
             <span style={{ color: "white", marginBottom: 10, fontWeight: 800 }}>{`"${
               GetUserData().nickname

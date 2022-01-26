@@ -53,7 +53,7 @@ function VideoUploadPage() {
       }
     } else {
       axios
-        .post(`${API_URL}/videouploads`, {
+        .post(`${API_URL}/uploads/videouploads`, {
           videoUrl: video,
           thumbnailUrl: thumbnail,
           title: title,

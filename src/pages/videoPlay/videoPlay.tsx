@@ -12,7 +12,7 @@ function VideoPlay(props: any) {
 
   const viewUpdate = () => {
     axios
-      .get(`${API_URL}/viewupdate/${id}`)
+      .get(`${API_URL}/media/viewupdate/${id}`)
       .then(() => {})
       .catch((err) => {
         console.error(err);
@@ -21,7 +21,7 @@ function VideoPlay(props: any) {
 
   const getVideo = () => {
     axios
-      .get(`${API_URL}/videoGet/${id}`)
+      .get(`${API_URL}/media/videoGet/${id}`)
       .then((result) => {
         setVideo(result.data.videoData);
       })
@@ -32,7 +32,7 @@ function VideoPlay(props: any) {
 
   const getRecommendationVideo = () => {
     axios
-      .get(`${API_URL}/videoGet/${id}/recommendation`)
+      .get(`${API_URL}/media/videoGet/${id}/recommendation`)
       .then((result) => {
         setRecommendationVideo(result.data.videoDatas);
       })

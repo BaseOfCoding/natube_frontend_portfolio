@@ -1,99 +1,12 @@
-/* :root {
-  --main_color: #1b1b1b;
-}
-
-.header-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--main_color);
-  padding: 8px 12px;
-}
-
-.header-group > .logo-group {
-  width: 15%;
-  display: flex;
-}
-
-.header-group > .logo-group > a > img {
-  width: 100px;
-  height: 60px;
-  margin-left: 10px;
-}
-
-.header-group > .input-group {
-  display: flex;
-  margin-right: 50px;
-  width: 50%;
-}
-
-.header-group > .input-group > input {
-  width: 90%;
-}
-
-.header-group > .input-group > button {
-  width: 35px;
-}
-
-.header-group > .input-group > button > img {
-  width: 100%;
-}
-
-.header-group > .header-menu-group {
-  display: flex;
-  margin-right: -10px;
-}
-
-.header-group > .header-menu-group > a > img {
-  width: 30px;
-  height: 30px;
-  margin-right: 20px;
-}
-
-.header_toggleButton {
-  display: none;
-  position: absolute;
-  right: 32px;
-  top: 25px;
-  font-size: 24px;
-  color: white;
-}
-
-@media screen and (max-width: 767px) {
-  .header-group {
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 24px;
-  }
-
-  .header-group > .logo-group {
-    width: 100%;
-  }
-
-  .header-group > .logo-group > a > img {
-    margin-left: 0px;
-  }
-
-  .header-group > .input-group {
-    display: none;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .header-group > .header-menu-group {
-    display: none;
-    margin-top: 20px;
-  }
-
-  .header_toggleButton {
-    display: block;
-  }
-} */
-
+/* header.css에서만 사용하는 변수를 지정해준다. */
 :root {
   --main_color: #1b1b1b;
 }
 
+/* flex를 이용해서, header를 정렬한다. 
+justify-content를 space-between로 지정해서, 각각의 이미지들을 간격을 준다. 
+align-items를 center로 해서, 수평을 맞춘다.
+*/
 .header-group {
   display: flex;
   justify-content: space-between;
@@ -102,6 +15,7 @@
   padding: 8px 12px;
 }
 
+/* 로고 영역 */
 .logo-group {
   width: 15%;
   display: flex;
@@ -113,6 +27,8 @@
   margin-left: 10px;
 }
 
+/* input 영역 */
+
 .input-group {
   display: flex;
   margin-right: 50px;
@@ -123,6 +39,14 @@
   width: 90%;
 }
 
+.input-group > input:disabled::placeholder {
+  color: white;
+}
+
+.input-group > input:disabled {
+  background-color: rgba(155, 155, 155, 0.8);
+}
+
 .input-group > button {
   width: 35px;
   cursor: pointer;
@@ -131,6 +55,8 @@
 .input-group > button > img {
   width: 100%;
 }
+
+/* 메뉴 영역 */
 
 .header-menu-group {
   display: flex;
@@ -160,6 +86,7 @@
   cursor: pointer;
 }
 
+/* 아이패드보다 가로 길이가 작을 경우, 미디어 쿼리를 이용해 값을 조정해서 반응형으로 만들었다. */
 @media screen and (max-width: 767px) {
   .header-group {
     flex-direction: column;

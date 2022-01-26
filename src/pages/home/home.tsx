@@ -9,7 +9,7 @@ function Home() {
 
   const getVideoInfo = () => {
     axios
-      .get(`${API_URL}/videomain`)
+      .get(`${API_URL}/media/videomain`)
       .then((result) => {
         const videoDatas = result.data.videoDatas;
         setVideoData(videoDatas);
@@ -22,7 +22,7 @@ function Home() {
   const tagOnClickListener = useCallback((e) => {
     // const tag = e.target.value;
     // axios
-    //   .get(`${API_URL}/videotag/${tag}`)
+    //   .get(`${API_URL}/media/videotag/${tag}`)
     //   .then((result) => {
     //     const videoData = result.data.videoDatas;
     //     setVideoData(videoData);

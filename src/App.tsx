@@ -12,6 +12,7 @@ function App() {
     <>
       <Header />
       <div id="body">
+        {/* react-router 라이브러리를 이용해서, Route를 이용해서, 해당 url로 이동하면, import된 tsx 파일로 만들어진 홈페이지를 렌더링하게 된다. default는 Home */}
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/home" component={Home} />

@@ -51,7 +51,7 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
           return typeConfirm ? true : Upload.LIST_IGNORE;
         }}
         maxCount={1}
-        action={`${API_URL}/media/${url_folder}`}
+        action={`${API_URL}/uploads/${url_folder}`}
         {...props}
       >
         <p className="ant-upload-drag-icon">
