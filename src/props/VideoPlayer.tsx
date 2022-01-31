@@ -3,9 +3,14 @@ import { Button } from "antd";
 import dayjs from "dayjs";
 import UserIcon from "../images/icons/user_icon.png";
 
+// videoPlayer를 보여주는 것을 JSX로 가지고 있는 함수
 export function VideoPlayer(props: any) {
-  const videoData = props.data;
+  const videoData = props.data; // 영상을 보여줄 비디오의 정보를 가지고 있다.
 
+  /* 
+  만약 videoData가 null 이라면, 비디오를 가져오고 있습니다... 라는 글을 보여준다.
+  만약 비디오의 정보가 있다면, 해당 비디오 정보에 맞게, 제목, 정보, 조회수, 업로드 날짜, 업로드를 한 사람의 닉네임을 보여주고, videoUrl에 있는 비디오를 재생한다.
+  */
   if (videoData == null) {
     return <h1>비디오를 가져오고 있습니다...</h1>;
   } else {
@@ -29,6 +34,7 @@ export function VideoPlayer(props: any) {
   }
 }
 
+// 좋아요, 싫어요, 공유버튼의 JSX
 function VideoPlayerButtonGroups() {
   return (
     <div className="videoPlay-info-buttonGroup">
@@ -45,6 +51,7 @@ function VideoPlayerButtonGroups() {
   );
 }
 
+// 닉네임과 구독자, 영상의 상세 정보 글의 JSX
 function UserInfoAndDescription(props: any) {
   return (
     <div className="videoPlay-user-info-description-group">
@@ -70,6 +77,7 @@ function BadOnClickListener() {
   alert("개발 예정중입니다.");
 }
 
+// 공유 버튼을 클릭할 경우, 해당 페이지의 주소를 복사해준다.
 function ShareOnClickListener() {
   let dummy = document.createElement("input");
   let urlText = document.location.href;
