@@ -2,8 +2,10 @@
 
 ---
 
-<center><img src="readmefolder/natube_icon.png">
-<br><br></center>
+<div align="center">
+<img src="readmefolder/natube_icon.png">
+<br>
+</div>
 
 - 세계 최대 비디오 스트리밍 사이트 Youtube를 클론코딩 해본 것이 아닌
   아무것도 모르는 상태에서 <u>[주식 계산기 사이트](https://stock-calculator.vercel.app/stockavarage)</u> 하나만 만들어본 뒤
@@ -19,7 +21,7 @@
 
 #### 2. 사용 기술 및 라이브러리
 
-<center>
+<div align="center">
 <br><br>
 <img src="https://img.shields.io/badge/React.js-3766AB?style=flat-square&logo=React&logoColor=white"/>
 <img src="https://img.shields.io/badge/Node.js-8DE986?style=flat-square&logo=Node.js&logoColor=black"/>
@@ -36,7 +38,7 @@
 <img src="https://img.shields.io/badge/sharp-322e2f?"/>
 <img src="https://img.shields.io/badge/sequelize-ffffff?"/>
 <img src="https://img.shields.io/badge/Antd-gray?"/>
-</center>
+</div>
 
 ---
 
@@ -61,12 +63,12 @@
   각 아이템의 배치가 어색하지 않게 변경했습니다.
   <br>
 
-### <center>[ PC View ]</center>
+### <div align="center">[ PC View ]</div>
 
 ![](readmefolder/home_pc.png)
 <br>
 
-### <center>[ Mobile View ]</center>
+### <div align="center">[ Mobile View ]</div>
 
 ![](readmefolder/home_mobile.png)
 <br>
@@ -159,12 +161,12 @@
 
 ---
 
-### <center>포트폴리오에 대한 내용을 마치도록 하겠습니다.<br> 모든 내용을 봐주셔서 감사합니다.</center>
+### <div align="center">포트폴리오에 대한 내용을 마치도록 하겠습니다.<br> 모든 내용을 봐주셔서 감사합니다.</div>
 
-# <center>Thank You!!</center>
+# <div align="center">Thank You!!</div>
 
-<center>
+<div align="center">
 <a href="https://includecoding.tistory.com/">
 <img src="https://img.shields.io/badge/My Blog ( Click Me! )-3766AB?style=flat-square&logo=Bloglovin&logoColor=white"/>
 </a>
-</center>
+</div>
