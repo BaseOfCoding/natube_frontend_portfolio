@@ -14,14 +14,14 @@ export function VideoView(props: any) {
 
   // 비디오의 정보에 맞게 렌더링한다.
   return (
-    <Link className="home-video-link" to={`/videoplay/${videoData.id}`}>
+    <Link to={`/videoplay/${videoData.id}`}>
       <div className="video-group">
         <img className="thumbnail-image" src={videoData.thumbnailUrl} alt="X" />
         <div className="video-media-info-group">
           <img
             className="profile-image"
             src={videoData.profileUrl != null ? videoData.profileUrl : "images/icons/user_icon.png"}
-            alt="X"
+            alt="x"
           />
           <div className="video-info">
             <span className="video-title">{videoData.title}</span>

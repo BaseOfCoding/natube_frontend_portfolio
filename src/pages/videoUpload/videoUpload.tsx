@@ -66,10 +66,8 @@ function VideoUploadPage() {
   빈칸이 없다면 업로드를 한다.
   */
   const uploadConfirm = () => {
-    if (!video || !thumbnail || !title || !description || !tag) {
-      if (!logined && !nickname) {
-        message.error("빈칸이 있습니다. 빈칸을 입력해주세요.", 1.0);
-      }
+    if (!video || !thumbnail || !title || !description || !tag || (!logined && !nickname)) {
+      message.error("빈칸이 있습니다. 빈칸을 입력해주세요.", 1.0);
     } else {
       axios
         .post(`${API_URL}/uploads/videouploads`, {

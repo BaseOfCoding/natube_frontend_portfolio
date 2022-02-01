@@ -7,6 +7,7 @@
 justify-content를 space-between로 지정해서, 각각의 이미지들을 간격을 준다. 
 align-items를 center로 해서, 수평을 맞춘다.
 */
+
 .header-group {
   display: flex;
   justify-content: space-between;
@@ -64,14 +65,15 @@ align-items를 center로 해서, 수평을 맞춘다.
 }
 
 .header-menu-group > a > img {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   margin-right: 20px;
 }
 
 .header-menu-group > img {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
   margin-right: 20px;
   cursor: pointer;
 }
