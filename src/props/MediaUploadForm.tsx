@@ -9,12 +9,13 @@ interface IMediaUploadInfo {
   setState: (str: string) => void;
   upload_text: string;
   type_text: string;
+  accept: string;
 }
 
 const { Dragger } = Upload; // 업로드 방식중에, Drag해서, 업로드 할 수 있는 디자인을 사용하기 위해 필요.
 
 // 업로드 관련 Form
-export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, type_text }: IMediaUploadInfo) {
+export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, type_text, accept }: IMediaUploadInfo) {
   // props 변수는, Dragger의 속성값들 또는 함수의 기능을 가지고 있는 변수.
   const props = {
     name: mediaFile, // name은, mediaFile로 전달받는 값을 대입
@@ -34,7 +35,7 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
         message.success("파일 업로드 성공!", 2.0);
         const response = info.file.response;
         var fileUrl = mediaFile === "video" ? response.videoUrl : response.thumbnailUrl;
-        setState(`${MEDIA_URL}${fileUrl}`);
+        setState(fileUrl);
       } else if (status === "error") {
         message.error("파일 업로드 실패!", 2.0);
       }
@@ -52,24 +53,7 @@ export function MediaUploadForm({ mediaFile, url_folder, setState, upload_text, 
   */
   return (
     <div className="media-dragger">
-      <Dragger
-        beforeUpload={(file) => {
-          let typeConfirm = true;
-          let splitAfterType = file.type.split("/");
-
-          if (splitAfterType[0] != "video" && mediaFile == "video") {
-            message.error("비디오 파일만 업로드가 가능합니다.");
-            typeConfirm = false;
-          } else if (splitAfterType[0] != "image" && mediaFile == "image") {
-            message.error("이미지 파일만 업로드가 가능합니다.");
-            typeConfirm = false;
-          }
-          return typeConfirm ? true : Upload.LIST_IGNORE;
-        }}
-        maxCount={1}
-        action={`${API_URL}/uploads/${url_folder}`}
-        {...props}
-      >
+      <Dragger accept={accept} maxCount={1} action={`${API_URL}/uploads/${url_folder}`} {...props}>
         <p className="ant-upload-drag-icon">
           <InboxOutlined />
         </p>

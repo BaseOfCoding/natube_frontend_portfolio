@@ -111,6 +111,7 @@ function VideoUploadPage() {
               url_folder="videos"
               upload_text="영상"
               type_text="비디오"
+              accept="video/*"
             />
           }
         />
@@ -123,6 +124,7 @@ function VideoUploadPage() {
               url_folder="thumbnails"
               upload_text="썸네일"
               type_text="이미지"
+              accept="image/*"
             />
           }
         />

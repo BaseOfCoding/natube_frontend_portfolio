@@ -31,7 +31,7 @@ function SignUp() {
       console.log("done");
       const res = file.response;
       const imageURL = res.profileUrl;
-      setImageURL(`${MEDIA_URL}${imageURL}`);
+      setImageURL(imageURL);
     }
   };
 
