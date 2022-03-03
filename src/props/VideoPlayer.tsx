@@ -2,6 +2,7 @@ import { LikeOutlined, MehOutlined, ShareAltOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import dayjs from "dayjs";
 import UserIcon from "../images/icons/user_icon.png";
+import { GetUserData } from "./auth";
 
 // videoPlayer를 보여주는 것을 JSX로 가지고 있는 함수
 export function VideoPlayer(props: any) {
@@ -27,7 +28,11 @@ export function VideoPlayer(props: any) {
             </div>
             <VideoPlayerButtonGroups />
           </div>
-          <UserInfoAndDescription nickname={videoData.nickname} description={videoData.description} />
+          <UserInfoAndDescription
+            profileUrl={videoData.profileUrl}
+            nickname={videoData.nickname}
+            description={videoData.description}
+          />
         </div>
       </>
     );
@@ -56,7 +61,7 @@ function UserInfoAndDescription(props: any) {
   return (
     <div className="videoPlay-user-info-description-group">
       <div className="videoPlay-user-profile-img">
-        <img src={UserIcon} alt="X" />
+        <img src={props.profileUrl ? props.profileUrl : UserIcon} alt="X" />
       </div>
       <div className="videoPlay-user-profile-description">
         <span className="videoPlay-nickname">{props.nickname}</span>
