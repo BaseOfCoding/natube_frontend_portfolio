@@ -17,7 +17,9 @@ export function VideoPlayer(props: any) {
   } else {
     return (
       <>
-        <video autoPlay src={videoData.videoUrl} controls className="videoPlayer" muted></video>
+        <video src={videoData.videoUrl} poster={videoData.thumbnailUrl} controls className="videoPlayer">
+          <source src={videoData.videoUrl} type="video/mp4"></source>
+        </video>
         <div className="videoPlay-info-group">
           <h1 className="videoPlay-info-title">{videoData.title}</h1>
           <div className="videoPlay-info-divide">
