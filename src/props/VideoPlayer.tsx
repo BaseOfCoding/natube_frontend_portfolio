@@ -17,7 +17,7 @@ export function VideoPlayer(props: any) {
   } else {
     return (
       <>
-        <video autoPlay src={videoData.videoUrl} controls className="videoPlayer" playsInline></video>
+        <video autoPlay src={videoData.videoUrl} controls className="videoPlayer" muted></video>
         <div className="videoPlay-info-group">
           <h1 className="videoPlay-info-title">{videoData.title}</h1>
           <div className="videoPlay-info-divide">
