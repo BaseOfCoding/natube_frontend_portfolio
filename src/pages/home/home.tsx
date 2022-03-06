@@ -14,6 +14,9 @@ function Home() {
     axios
       .get(`${API_URL}/media/videomain`)
       .then((result) => {
+        if (result.data == "에러 발생!!") {
+          return;
+        }
         const videoDatas = result.data.videoDatas;
         setVideoData(videoDatas);
       })
